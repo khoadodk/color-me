@@ -144,14 +144,12 @@ function colorme_scripts() {
 	// Tachyons
 	wp_enqueue_style('colorme-tachyons', get_template_directory_uri() . '/css/tachyons.css');
 
-	// TCustom CSS
-	wp_enqueue_style('colorme-custom', get_template_directory_uri() . '/css/custom.css');
+	// Custom CSS
+	wp_enqueue_style('colorme-custom', get_template_directory_uri() . '/css/custom.css', array(), time());
 
-	wp_enqueue_script( 'colorme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'colorme-marque', get_template_directory_uri() . '/js/marque.js', array(), _S_VERSION, true );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+	
 }
 add_action( 'wp_enqueue_scripts', 'colorme_scripts' );
 

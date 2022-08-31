@@ -23,7 +23,7 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <div id="page" class="site">
-	<header id="masthead" class="site-header flex " style="<?php if( !is_front_page() OR !is_home()){category_header_background();} ?>">
+	<header id="masthead" class="site-header flex " style="<?php category_header_background(); ?>">
 		<nav id="site-navigation" class="main-navigation flex flex-auto items-end">
 			<!-- Logo -->
 			<a href="<?php echo get_site_url() ?>" class="logo">
@@ -42,6 +42,6 @@
 		</nav><!-- #site-navigation -->
 
 		<div class="site-branding">
-			<?php echo wp_get_attachment_image(14, 'full'); ?>
+			<img src="<?php get_category_image() ?>" class="db featured-image">
 		</div>
 	</header><!-- #masthead -->

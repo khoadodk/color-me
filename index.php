@@ -16,6 +16,11 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main">
+
+		<h1 class="woocommerce-products-header__title page-title">
+			<span class="marque">New Arrivals</span>
+		</h1>
+
 		<ul class="products">
 			<?php
 				$args = array(

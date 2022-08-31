@@ -31,9 +31,9 @@ function colorme_woocommerce_setup() {
 			),
 		)
 	);
-	add_theme_support( 'wc-product-gallery-zoom' );
-	add_theme_support( 'wc-product-gallery-lightbox' );
-	add_theme_support( 'wc-product-gallery-slider' );
+	// add_theme_support( 'wc-product-gallery-zoom' );
+	// add_theme_support( 'wc-product-gallery-lightbox' );
+	// add_theme_support( 'wc-product-gallery-slider' );
 }
 add_action( 'after_setup_theme', 'colorme_woocommerce_setup' );
 
@@ -208,8 +208,10 @@ if ( ! function_exists( 'colorme_woocommerce_header_cart' ) ) {
  */
 if ( ! function_exists( 'get_category_id' ) ) {
 	function get_category_id() {
-		$category = get_queried_object();
-		return $category-> term_id;
+		if( !is_front_page() OR !is_home()){
+			$category = get_queried_object();
+			return $category-> term_id;
+		}
 	}
 }
 /**
@@ -217,8 +219,38 @@ if ( ! function_exists( 'get_category_id' ) ) {
  */
 if ( ! function_exists( 'category_header_background' ) ) {
 	function category_header_background() {
-		$category_id = get_category_id();
-		$bg_color = get_field('background_color', 'product_cat_' . $category_id);
-		echo 'background-color: ' . $bg_color;
+		if( !is_front_page() OR !is_home()){
+			$category_id = get_category_id();
+			$bg_color = get_field('background_color', 'product_cat_' . $category_id);
+			echo 'background-color: ' . $bg_color;
+		}
 	}
 }
+/**
+ * Return featured image according to the category
+ */
+if ( ! function_exists( 'get_category_image' ) ) {
+	function get_category_image() {
+		$category_id = get_category_id();
+		if( !empty($category_id)){
+			$thumbnail_id = get_term_meta($category_id, 'thumbnail_id', true);
+			echo wp_get_attachment_url($thumbnail_id);
+		} else {
+			echo get_template_directory_uri() . '/images/hero.jpg';
+		}
+	}
+}
+
+
+/**
+ * Return full size product images
+ */
+add_filter('single_product_archive_thumbnail_size', function($size){
+	return 'full';
+});
+
+// Remove hooks on archive/category pages
+remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
+remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
+remove_action('woocommerce_before_shop_loop', 'wc_print_notices', 10);
+remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);

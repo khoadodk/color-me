@@ -63,7 +63,7 @@ if ( woocommerce_product_loop() ) {
 			the_post();
 
 			/**
-			 * Hook: woocommerce_shop_loop.
+			 * Hook: woocommerce_shop_loop. 
 			 */
 			do_action( 'woocommerce_shop_loop' );
 
