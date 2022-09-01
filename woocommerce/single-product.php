@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header( 'shop' ); ?>
 
-	<header id="masthead" class="site-header flex " style="<?php single_header_background(); ?>">
+	<header id="masthead" class="site-header flex-ns" style="<?php single_header_background(); ?>">
 
 	<?php get_template_part('template-parts/category-navigation'); ?>
 

@@ -281,3 +281,10 @@ remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_pr
 remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
 remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10);
 remove_action('woocommerce_before_single_product', 'wc_print_notices', 10);
+
+// Remove choose option in variation select
+add_filter('woocommerce_dropdown_variation_attribute_options_args','dropdown_variation_attribute_options', 10, 1);
+function dropdown_variation_attribute_options($args){
+	$args['show_option_none'] = __("");
+	return $args;
+}

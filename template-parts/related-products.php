@@ -24,7 +24,7 @@
     $loop = new WP_Query($query_args);
     if($loop->have_posts()): 
 ?>
-    <ul class='related-products'>
+    <ul class='related-products flex-ns'>
         <?php while ($loop->have_posts()) :$loop->the_post(); global $product; ?>
             <?php wc_get_template_part('content', 'product'); ?>
         <?php endwhile; ?>

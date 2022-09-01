@@ -55,7 +55,7 @@ ul {
 
 .main-menu a {
     display: block;
-    font-size: 38px;
+    font-size: 32px;
     text-decoration: none;
     color: #fff;
     line-height: 1.5;
@@ -168,9 +168,7 @@ ul {
 }
 
 .single-product .product {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 100%
 }
 
 .single-product .summary {
@@ -183,7 +181,6 @@ ul {
 }
 
 .related-products {
-    display: flex;
     margin: 0;
     padding: 0;
 }
@@ -276,6 +273,68 @@ td{
     background-color:rgba(0,0,0,0.2);
 }
 
+/* Product Page */
+.summary .product_title {
+    color : #fff;
+    font-size: 2.2rem;
+    line-height: 1;
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.summary .price {
+    font-size: 1.5rem;
+    color: #fff;
+    line-height: 1;
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.summary .woocommerce-product-details__short-description {
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+}
+
+.summary .p1 {
+    margin:  0;
+}
+
+.summary .quantity {
+    display: none!important;
+}
+
+.summary .button {
+    background-color: #fff;
+    margin-top: 2rem;
+}
+
+.variations tbody {
+    display: flex;
+}
+
+.variations .label {
+    display: none!important;
+}
+
+.variations .value {
+    display: block;
+    padding: 0;
+    padding-right: .25rem;
+}
+
+.variations select {
+    height: 32px;
+    border: none;
+    border-radius: 5px;
+    padding: 0;
+    display: block;
+}
+
+.product .add_to_cart_button, .reset_variations {
+    display: none!important;
+}
+
 @media (max-width: 40em){
     .product-thumbnail {
         display: none;
@@ -288,8 +347,8 @@ td{
     .coupon {
         margin-bottom: 1rem;
     }
-}
 
-.product .add_to_cart_button {
-    display: none!important;
+    .main-menu a {
+        font-size: 26px;
+    }
 }

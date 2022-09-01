@@ -18,6 +18,13 @@
 defined( 'ABSPATH' ) || exit;
 
 global $product;
+?>
+<style>
+	.summary .button {
+		color: <?php the_field('background_color') ?>
+	}
+</style>
+<?php
 
 /**
  * Hook: woocommerce_before_single_product.
@@ -31,7 +38,7 @@ if ( post_password_required() ) {
 	return;
 }
 ?>
-<div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
+<div id="product-<?php the_ID(); ?>" <?php wc_product_class( 'flex-ns flex-auto items-center ma4-l pa3', $product ); ?>>
 	<?php get_template_part('template-parts/header-search') ?>
 	<?php
 	/**
