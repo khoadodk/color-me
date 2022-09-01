@@ -241,6 +241,17 @@ if ( ! function_exists( 'get_category_image' ) ) {
 	}
 }
 
+/**
+ * Return background color for product
+ */
+if ( ! function_exists( 'single_header_background' ) ) {
+	function single_header_background(){
+		$bg_color = get_field('background_color', wc_get_product()->get_id());
+		echo 'background-color:  ' . $bg_color;
+	}
+}
+
+
 
 /**
  * Return full size product images
@@ -254,3 +265,9 @@ remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
 remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
 remove_action('woocommerce_before_shop_loop', 'wc_print_notices', 10);
 remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
+
+// Remove unused hooks on product content page
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
+remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
+remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
+remove_action('woocommerce_before_single_product', 'wc_print_notices', 10);

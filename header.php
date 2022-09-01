@@ -23,25 +23,24 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <div id="page" class="site">
-	<header id="masthead" class="site-header flex " style="<?php category_header_background(); ?>">
-		<nav id="site-navigation" class="main-navigation flex flex-auto items-end">
-			<!-- Logo -->
-			<a href="<?php echo get_site_url() ?>" class="logo">
-				<h1>Color Me</h1>
-			</a>
-			<!-- Nav -->
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-					'menu_class' => 'main-menu ma0 pa0 list'
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
 
-		<div class="site-branding">
-			<img src="<?php get_category_image() ?>" class="db featured-image">
-		</div>
-	</header><!-- #masthead -->
+	<!-- Notice/Flash message -->
+	<?php if(wc_notice_count()): ?>
+	<div class="pa3 tc">
+		<?php wc_print_notices(); ?>
+	</div>
+	<?php endif ?>
+
+	<?php if(is_home() or is_product_category()): ?>
+
+	<header id="masthead" class="site-header flex-ns" style="<?php category_header_background(); ?>">
+		
+		<?php get_template_part('template-parts/category-navigation'); ?>
+
+		<?php get_template_part('template-parts/featured-image'); ?>
+
+	</header>
+
+	<?php elseif(!is_product()): ?>
+		<?php get_template_part('template-parts/page-header'); ?>
+	<?php endif ?>

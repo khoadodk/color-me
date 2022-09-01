@@ -21,6 +21,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header( 'shop' ); ?>
 
+	<header id="masthead" class="site-header flex " style="<?php single_header_background(); ?>">
+
+	<?php get_template_part('template-parts/category-navigation'); ?>
+
 	<?php
 		/**
 		 * woocommerce_before_main_content hook.
@@ -37,6 +41,10 @@ get_header( 'shop' ); ?>
 			<?php wc_get_template_part( 'content', 'single-product' ); ?>
 
 		<?php endwhile; // end of the loop. ?>
+
+	</header>
+
+	<?php get_template_part('template-parts/related-products') ?>
 
 	<?php
 		/**

@@ -24,7 +24,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
-<li <?php wc_product_class( 'w-third relative', $product ); ?> style="background-color: <?php the_field('background_color') ?>">
+<li <?php wc_product_class( 'w-third-ns relative', $product ); ?> style="background-color: <?php the_field('background_color') ?>">
 	<?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
