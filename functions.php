@@ -50,6 +50,8 @@ function colorme_setup() {
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__( 'Primary', 'colorme' ),
+			'menu-2' => esc_html__( 'Footer', 'colorme' ),
+			'menu-3' => esc_html__( 'Social', 'colorme' ),
 		)
 	);
 

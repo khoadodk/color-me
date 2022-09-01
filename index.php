@@ -47,6 +47,10 @@ get_header();
 		</ul><!--/.products-->
 	</main><!-- #main -->
 
+	<div class="home-video">
+		<video src="<?php echo get_template_directory_uri() . "/images/video.mp4" ?>"  type="video/mp4" class="db w-100 h-auto" autoplay loop muted plays-inline></video>
+	</div>
+
 <?php
 
 get_footer();
